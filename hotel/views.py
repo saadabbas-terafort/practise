@@ -20,6 +20,7 @@ from datetime import date
 class HotelView(APIView):
     def get(self, request):
         hotels = Hotel.objects.all()
+        print(hotels.explain(analyze=True))
         hotel = HotelSerializer(hotels, many=True)
         return Response(hotel.data)
 
@@ -38,6 +39,7 @@ class HotelView(APIView):
 class StaffView(APIView):
     def get(self , request):
         Stafff = Staff.objects.all()
+        print(Stafff.explain(analyze=True))
         staff = StaffSerializer(Stafff , many = True)
         return Response(staff.data)
     
@@ -81,8 +83,8 @@ class GuestView(APIView):
             Guest(name="Ali Khan", email="ali@example.com", phone="03001234567", address="Lahore"),
             Guest(name="Sara Ahmed", email="sara@example.com", phone="03011234567", address="Islamabad"),
             Guest(name="Usman Raza", email="usman@example.com", phone="03021234567", address="Karachi"),
-            Guest(name="Ayesha Noor", email="ayesha@example.com", phone="03031234567", address="Multan"),
-            Guest(name="Bilal Shah", email="bilal@example.com", phone="03041234567", address="Faisalabad"),
+            Guest(name="Ayesha Noor", email="ayeshanoor@example.com", phone="03031234567", address="Multan"),
+            Guest(name="Bilal Shah", email="bilalshah@example.com", phone="03041234567", address="Faisalabad"),
         ])
         guest = GuestSerializer(guests, many=True)
         return Response(guest.data)
